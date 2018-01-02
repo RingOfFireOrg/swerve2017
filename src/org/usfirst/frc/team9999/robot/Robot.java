@@ -19,6 +19,8 @@ public class Robot extends IterativeRobot {
 	String autoSelected;
 	SendableChooser<String> chooser = new SendableChooser<>();
 	
+	Joystick commandStick = new Joystick(0);
+	
 	Jaguar driveFrontRight = new Jaguar(2);
 	Jaguar driveFrontLeft = new Jaguar(0);
 	Jaguar driveBackRight = new Jaguar(6);
@@ -91,7 +93,13 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		encoder.getAngle();
+		double speed = commandStick.getThrottle();
+		double direction = commandStick.getDirectionDegrees();
+		
+		frontRight.control(speed, direction);
+		frontLeft.control(speed, direction);
+		backRight.control(speed, direction);
+		backLeft.control(speed, direction);
 		
 		
 		
