@@ -24,13 +24,17 @@ public class Robot extends IterativeRobot {
 	Jaguar driveBackRight = new Jaguar(6);
 	Jaguar driveBackLeft = new Jaguar(4);
 
-	TalonSRX steerFrontRight = new TalonSRX(3);
-	TalonSRX steerFrontLeft = new TalonSRX(1);
-	TalonSRX steerBackRight = new TalonSRX(7);
-	TalonSRX steerBackLeft = new TalonSRX(5);
+	TalonSRX steerFrontRight = new TalonSRX(1);
+	TalonSRX steerFrontLeft = new TalonSRX(3);
+	TalonSRX steerBackRight = new TalonSRX(5);
+	TalonSRX steerBackLeft = new TalonSRX(7);
 	
-	AbsoluteAnalogEncoder encoder = new AbsoluteAnalogEncoder(8);
-	//^obviously needs to be fixed, just a place holder. :)
+	AbsoluteAnalogEncoder steerEncoderFrontRight = new AbsoluteAnalogEncoder(0);
+	AbsoluteAnalogEncoder steerEncoderFrontLeft = new AbsoluteAnalogEncoder(1);
+	AbsoluteAnalogEncoder steerEncoderBackRight = new AbsoluteAnalogEncoder(2);
+	AbsoluteAnalogEncoder steerEncoderBackLeft = new AbsoluteAnalogEncoder(3);
+	
+	//^numbers?????
 	
 	SwerveModule frontLeft = new SwerveModule(driveFrontLeft, steerFrontLeft, encoder);
 	SwerveModule frontRight = new SwerveModule(driveFrontRight, steerFrontRight, encoder);
@@ -87,7 +91,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		
+		encoder.getAngle();
 		
 		
 		
