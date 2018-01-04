@@ -96,10 +96,10 @@ public class Robot extends IterativeRobot {
 		double speed = commandStick.getThrottle();
 		double direction = commandStick.getDirectionDegrees();
 		
-		frontRight.control(speed, direction);
-		frontLeft.control(speed, direction);
-		backRight.control(speed, direction);
-		backLeft.control(speed, direction);
+		frontRight.control(speed, direction - 255.791);
+		frontLeft.control(speed, direction - 180.703);
+		backRight.control(speed, direction - 199.160);
+		backLeft.control(speed, direction - 3.340);
 		
 		
 		
