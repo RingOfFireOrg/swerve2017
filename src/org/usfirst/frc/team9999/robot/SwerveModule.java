@@ -1,11 +1,13 @@
 package org.usfirst.frc.team9999.robot;
 
 import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.TalonSRX;
+import edu.wpi.first.wpilibj.Talon;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 
 public class SwerveModule {
 	Jaguar drive;
-	TalonSRX steer;
+	Talon steer;
 	AbsoluteAnalogEncoder turnEncoder;
 	PIDController pid = new PIDController(1, 0, 0, turnEncoder.getAngle, turnSpeed);
 	double speed;
@@ -13,7 +15,7 @@ public class SwerveModule {
 	double angleGoal;
 	double currentAngle;
 
-	public SwerveModule(Jaguar driveMotor, TalonSRX steerMotor, AbsoluteAnalogEncoder steerEncoder) {
+	public SwerveModule(Jaguar driveMotor, Talon steerMotor, AbsoluteAnalogEncoder steerEncoder) {
 		drive = driveMotor;
 		steer = steerMotor;
 		turnEncoder = steerEncoder;
@@ -24,14 +26,14 @@ public class SwerveModule {
 		drive.set(speed);
 	}
 
-	private void setAngle (double wheelAngleGoal) {
+	public void setAngle (double wheelAngleGoal) {
 		angleGoal = wheelAngleGoal;
 		currentAngle = turnEncoder.getAngle();
-		if(math.abs(pid.getSetpoint - turnEncoder.getAngle()) < 5) {
+		if(math.abs(angleGoal - turnEncoder.getAngle()) < 5) {
 			//nothing
 		} else {
-			pid.setSetpoint(angle);
-			pid.enable
+			//pid.setSetpoint(angle);
+			//pid.enable
 			steer.set(turnSpeed);
 		}
 		

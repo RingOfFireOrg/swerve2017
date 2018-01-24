@@ -2,7 +2,7 @@ package org.usfirst.frc.team9999.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.TalonSRX;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -26,10 +26,10 @@ public class Robot extends IterativeRobot {
 	Jaguar driveBackRight = new Jaguar(6);
 	Jaguar driveBackLeft = new Jaguar(4);
 
-	TalonSRX steerFrontRight = new TalonSRX(1);
-	TalonSRX steerFrontLeft = new TalonSRX(3);
-	TalonSRX steerBackRight = new TalonSRX(5);
-	TalonSRX steerBackLeft = new TalonSRX(7);
+	Talon steerFrontRight = new Talon(1);
+	Talon steerFrontLeft = new Talon(3);
+	Talon steerBackRight = new Talon(5);
+	Talon steerBackLeft = new Talon(7);
 	
 	AbsoluteAnalogEncoder steerEncoderFrontRight = new AbsoluteAnalogEncoder(0);
 	AbsoluteAnalogEncoder steerEncoderFrontLeft = new AbsoluteAnalogEncoder(1);
@@ -93,14 +93,20 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		
+		/*
 		double speed = commandStick.getThrottle();
 		double direction = commandStick.getDirectionDegrees();
-		
 		frontRight.control(speed, direction - 255.791);
 		frontLeft.control(speed, direction - 180.703);
 		backRight.control(speed, direction - 199.160);
 		backLeft.control(speed, direction - 3.340);
+		*/
 		
+		frontRight.setAngle(180 - 255.791);
+		frontLeft.setAngle(180 - 180.703);
+		backRight.setAngle(180  - 199.160);
+		backLeft.setAngle(180 - 199.160);
 		
 		
 	}
